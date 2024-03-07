@@ -1,4 +1,4 @@
 __init__.py
-__pycache__
+__pycache__/
 .venv
 db.sqlite3
