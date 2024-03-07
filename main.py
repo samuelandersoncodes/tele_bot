@@ -1,7 +1,7 @@
 import telebot
 from env import TELEGRAM_BOT_TOKEN
 
-bot = telebot(TELEGRAM_BOT_TOKEN, parse_mode=None)
+bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN, parse_mode=None)
 
 
 @bot.message_handler(commands=["help", "hello"])
