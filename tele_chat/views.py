@@ -24,7 +24,7 @@ def telegram_polling(request):
     # Prepare the request payload
     payload = {
         "offset": latest_update_id + 1 if latest_update_id else None,
-        "timeout": 30,
+        "timeout": 300,
     }
     # Make a request to the Telegram server to get updates
     response = requests.get(
