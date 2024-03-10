@@ -7,8 +7,6 @@ from .models import TelegramMessage
 import os
 
 
-@csrf_exempt
-@require_POST
 def telegram_polling(request):
     """
     This function retrieves updates from
