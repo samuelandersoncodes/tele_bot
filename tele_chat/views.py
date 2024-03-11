@@ -7,6 +7,25 @@ from .models import TelegramMessage
 import os
 
 
+def send_telegram_message(chat_id, text):
+    """
+    This function sends a message to the Telegram chat
+    using the sendMessage method.
+    """
+    telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    payload = {
+        "chat_id": chat_id,
+        "text": text,
+    }
+    response = requests.post(
+        f"https://api.telegram.org/bot{telegram_bot_token}/sendMessage", data=payload
+    )
+    if response.ok:
+        print(f"Message sent successfully {chat_id}")
+    else:
+        print(f"Sorry! Your message failed. Response: {response.text}")
+
+
 def telegram_polling(request):
     """
     This function retrieves updates from
