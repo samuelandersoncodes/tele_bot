@@ -34,6 +34,8 @@ def telegram_polling(request):
     """
     # Telegram bot token retrieved from env
     telegram_bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    # Telegram bot chat id retrieved from env
+    telegram_bot_chatid = os.environ.get("TELEGRAM_BOT_CHATID")
     # Get the latest update id from the database
     latest_update_id = (
         TelegramMessage.objects.latest("id").id
@@ -55,5 +57,8 @@ def telegram_polling(request):
         chat_id = update["message"]["chat"]["id"]
         message_text = update["message"]["text"]
         TelegramMessage.objects.create(chat_id=chat_id, message_text=message_text)
+        # Send a response message to the chat
+        response_text = f"Testing.......!"
+        send_telegram_message(telegram_bot_chatid, response_text)
     # Respond to the Telegram server to acknowledge updates reciept
     return JsonResponse({"status": "ok"})
