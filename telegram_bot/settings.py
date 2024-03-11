@@ -31,6 +31,9 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 # Telegram token
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
+# Telegram bot chat id
+TELEGRAM_BOT_CHATID = os.environ.get("TELEGRAM_BOT_CHATID")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
