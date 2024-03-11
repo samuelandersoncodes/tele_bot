@@ -1,5 +1,6 @@
 import requests
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 import json
@@ -62,3 +63,9 @@ def telegram_polling(request):
         send_telegram_message(telegram_bot_chatid, response_text)
     # Respond to the Telegram server to acknowledge updates reciept
     return JsonResponse({"status": "ok"})
+
+
+def test_telegram_message(request):
+    telegram_bot_chatid = os.environ.get("TELEGRAM_BOT_CHATID")
+    send_telegram_message(telegram_bot_chatid, 'Test message from the server...!')
+    return HttpResponse('Test message sent successfully!')
